@@ -5,6 +5,8 @@ class Comment < ApplicationRecord
 
   # Validations
 
+  validates :commenter_id, :presence => true
+
   validates :photo_id, :presence => true
 
   # Scopes
