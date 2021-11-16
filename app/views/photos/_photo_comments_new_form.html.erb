@@ -16,7 +16,7 @@
     <%= f.label :commenter_id %>
 
     <!-- Input for commenter_id start -->
-    <%= f.text_field :commenter_id, class: "form-control" %>
+    <%= f.collection_select :commenter_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for commenter_id end -->
   </div>
   <!-- Label and input for commenter_id end -->
