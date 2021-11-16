@@ -42,7 +42,7 @@
 
     <%= f.label :photo_id %>
     <!-- Input for photo_id start -->
-    <%= f.number_field :photo_id, class: photo_class, placeholder: "Enter photo" %>
+    <%= f.collection_select :photo_id, Photo.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for photo_id end -->
     <% if photo_was_invalid %>
       <% like.errors.full_messages_for(:photo).each do |message| %>
