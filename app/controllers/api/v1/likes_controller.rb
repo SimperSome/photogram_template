@@ -13,7 +13,7 @@ class Api::V1::LikesController < Api::V1::GraphitiController
     like = LikeResource.build(params)
 
     if like.save
-      render jsonapi: like, status: 201
+      render jsonapi: like, status: :created
     else
       render jsonapi_errors: like
     end
@@ -33,7 +33,7 @@ class Api::V1::LikesController < Api::V1::GraphitiController
     like = LikeResource.find(params)
 
     if like.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: like
     end
