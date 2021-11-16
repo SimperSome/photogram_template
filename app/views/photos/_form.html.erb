@@ -68,7 +68,7 @@
 
     <%= f.label :owner_id %>
     <!-- Input for owner_id start -->
-    <%= f.number_field :owner_id, class: owner_class, placeholder: "Enter owner" %>
+    <%= f.collection_select :owner_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for owner_id end -->
     <% if owner_was_invalid %>
       <% photo.errors.full_messages_for(:owner).each do |message| %>
