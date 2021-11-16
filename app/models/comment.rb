@@ -5,6 +5,8 @@ class Comment < ApplicationRecord
 
   # Validations
 
+  validates :photo_id, :presence => true
+
   # Scopes
 
   def to_s
