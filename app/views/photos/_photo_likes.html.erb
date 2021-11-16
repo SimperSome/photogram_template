@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to like, method: :delete, data: { confirm: "Do you really want to delete this like" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == like.user %>
+          <%= link_to like, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 

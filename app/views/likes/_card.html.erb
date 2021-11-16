@@ -24,16 +24,20 @@
 
       <!-- Edit link like start -->
       <div class="col">
-        <%= link_to edit_like_url(like), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @like.user %>
+          <%= link_to edit_like_url(like), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link like end -->
 
       <!-- Delete link like start -->
       <div class="col">
-        <%= link_to like, method: :delete, data: { confirm: "Do you really want to delete this like?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @like.user %>
+          <%= link_to like, method: :delete, data: { confirm: "Do you really want to delete this like?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link like end -->
