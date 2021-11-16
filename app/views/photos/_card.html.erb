@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Photo #<%= photo.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Caption</dt>
+      <!-- Display caption start -->
+      <dd><%= photo.caption %></dd>
+      <!-- Display caption end -->
+
+      <dt>Image</dt>
+      <!-- Display image start -->
+      <dd><%= photo.image %></dd>
+      <!-- Display image end -->
+
+      <dt>Owner</dt>
+      <!-- Display owner_id start -->
+      <dd><%= photo.owner_id %></dd>
+      <!-- Display owner_id end -->
+
+      <dt>Location</dt>
+      <!-- Display location start -->
+      <dd><%= photo.location %></dd>
+      <!-- Display location end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back photo, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link photo start -->
+      <div class="col">
+        <%= link_to edit_photo_url(photo), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link photo end -->
+
+      <!-- Delete link photo start -->
+      <div class="col">
+        <%= link_to photo, method: :delete, data: { confirm: "Do you really want to delete this photo?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link photo end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(photo.updated_at) %> ago
+  </div>
+</div>
