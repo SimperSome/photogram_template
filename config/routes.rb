@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "photos#index"
   resources :comments
   resources :follow_requests
   resources :likes
