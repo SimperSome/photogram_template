@@ -16,7 +16,7 @@
 
     <%= f.label :sender_id %>
     <!-- Input for sender_id start -->
-    <%= f.number_field :sender_id, class: sender_class, placeholder: "Enter sender" %>
+    <%= f.collection_select :sender_id, User.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for sender_id end -->
     <% if sender_was_invalid %>
       <% follow_request.errors.full_messages_for(:sender).each do |message| %>
