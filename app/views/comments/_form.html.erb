@@ -1,7 +1,6 @@
 <% was_validated = comment.errors.any? %>
 
 <%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for body start -->
   <div class="form-group">
     <% body_class = "form-control" %>
     <% body_was_invalid = comment.errors.include?(:body) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, class: body_class, placeholder: "Enter body" %>
-    <!-- Input for body end -->
     <% if body_was_invalid %>
       <% comment.errors.full_messages_for(:body).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,13 +23,7 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for body end -->
-  <!-- Label and input for commenter_id start -->
-  <!-- Input for "commenter_id" start -->
   <%= f.hidden_field :commenter_id, value: current_user.id %>
-  <!-- Input for "commenter_id" end -->
-  <!-- Label and input for commenter_id end -->
-  <!-- Label and input for photo_id start -->
   <div class="form-group">
     <% photo_class = "form-control" %>
     <% photo_was_invalid = comment.errors.include?(:photo) %>
@@ -46,9 +37,7 @@
     <% end %>
 
     <%= f.label :photo_id %>
-    <!-- Input for photo_id start -->
     <%= f.collection_select :photo_id, Photo.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for photo_id end -->
     <% if photo_was_invalid %>
       <% comment.errors.full_messages_for(:photo).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -57,6 +46,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for photo_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

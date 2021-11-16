@@ -1,42 +1,24 @@
-<!-- Form photo start -->
 <%= form_with(model: @photo, local: true) do |f| %>
-<!-- Form photo end -->
 
-  <!-- Label and input for caption start -->
   <div class="form-group">
     <%= f.label :caption %>
 
-    <!-- Input for caption start -->
     <%= f.text_field :caption, class: "form-control" %>
-    <!-- Input for caption end -->
   </div>
-  <!-- Label and input for caption end -->
 
-  <!-- Label and input for image start -->
   <div class="form-group">
     <%= f.label :image %>
 
-    <!-- Input for image start -->
     <%= f.file_field :image, class: "form-control" %>
-    <!-- Input for image end -->
   </div>
-  <!-- Label and input for image end -->
 
-  <!-- Label and input for owner_id start -->
-  <!-- Input for owner_id start -->
   <%= f.hidden_field :owner_id, value: @user.id %>
-  <!-- Input for owner_id end -->
-  <!-- Label and input for owner_id end -->
 
-  <!-- Label and input for location start -->
   <div class="form-group">
     <%= f.label :location %>
 
-    <!-- Input for location start -->
     <%= f.text_field :location, class: "form-control" %>
-    <!-- Input for location end -->
   </div>
-  <!-- Label and input for location end -->
 
   <%= f.submit "Create photo", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

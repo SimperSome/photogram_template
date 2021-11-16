@@ -1,18 +1,8 @@
-<!-- Form like start -->
 <%= form_with(model: @like, local: true) do |f| %>
-<!-- Form like end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
 
-  <!-- Label and input for photo_id start -->
-  <!-- Input for photo_id start -->
   <%= f.hidden_field :photo_id, value: @photo.id %>
-  <!-- Input for photo_id end -->
-  <!-- Label and input for photo_id end -->
 
   <%= f.submit "Create like", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

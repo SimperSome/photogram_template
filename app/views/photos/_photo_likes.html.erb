@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @photo.likes.each do |like| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to like, like %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == like.user %>
           <%= link_to like, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="photo_likes_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "photos/photo_likes_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

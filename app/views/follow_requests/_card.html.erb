@@ -6,22 +6,18 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Sender</dt>
-      <!-- Display sender_id start -->
       <dd>
         <% if @follow_request.sender.present? %>
           <%= link_to follow_request.sender, follow_request.sender %>
         <% end %>
       </dd>
-      <!-- Display sender_id end -->
 
       <dt>Recipient</dt>
-      <!-- Display recipient_id start -->
       <dd>
         <% if @follow_request.recipient.present? %>
           <%= link_to follow_request.recipient, follow_request.recipient %>
         <% end %>
       </dd>
-      <!-- Display recipient_id end -->
 
     </dl>
 
@@ -30,7 +26,6 @@
         <%= link_to_show_or_back follow_request, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link follow_request start -->
       <div class="col">
         <% if current_user == @follow_request.sender %>
           <%= link_to edit_follow_request_url(follow_request), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -38,9 +33,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link follow_request end -->
 
-      <!-- Delete link follow_request start -->
       <div class="col">
         <% if current_user == @follow_request.sender %>
           <%= link_to follow_request, method: :delete, data: { confirm: "Do you really want to delete this follow_request?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -48,7 +41,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link follow_request end -->
     </div>
   </div>
 

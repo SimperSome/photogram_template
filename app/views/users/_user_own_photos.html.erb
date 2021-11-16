@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @user.own_photos.each do |photo| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to photo, photo %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="user_own_photos_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "users/user_own_photos_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

@@ -1,27 +1,13 @@
-<!-- Form comment start -->
 <%= form_with(model: @comment, local: true) do |f| %>
-<!-- Form comment end -->
 
-  <!-- Label and input for body start -->
   <div class="form-group">
     <%= f.label :body %>
-    <!-- Input for body start -->
     <%= f.text_area :body, rows: "3", class: "form-control" %>
-    <!-- Input for body end -->
   </div>
-  <!-- Label and input for body end -->
 
-  <!-- Label and input for commenter_id start -->
-  <!-- Input for "commenter_id" start -->
   <%= f.hidden_field :commenter_id, value: current_user.id %>
-  <!-- Input for "commenter_id" end -->
-  <!-- Label and input for commenter_id end -->
 
-  <!-- Label and input for photo_id start -->
-  <!-- Input for photo_id start -->
   <%= f.hidden_field :photo_id, value: @photo.id %>
-  <!-- Input for photo_id end -->
-  <!-- Label and input for photo_id end -->
 
   <%= f.submit "Create comment", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

@@ -1,7 +1,6 @@
 <% was_validated = photo.errors.any? %>
 
 <%= form_with(model: photo, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for caption start -->
   <div class="form-group">
     <% caption_class = "form-control" %>
     <% caption_was_invalid = photo.errors.include?(:caption) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :caption %>
-    <!-- Input for caption start -->
     <%= f.text_field :caption, class: caption_class, placeholder: "Enter caption" %>
-    <!-- Input for caption end -->
     <% if caption_was_invalid %>
       <% photo.errors.full_messages_for(:caption).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for caption end -->
-  <!-- Label and input for image start -->
   <div class="form-group">
     <% image_class = "form-control" %>
     <% image_was_invalid = photo.errors.include?(:image) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :image %>
-    <!-- Input for image start -->
     <%= f.file_field :image, class: "form-control" %>
-    <!-- Input for image end -->
     <% if image_was_invalid %>
       <% photo.errors.full_messages_for(:image).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,13 +45,7 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for image end -->
-  <!-- Label and input for owner_id start -->
-  <!-- Input for "owner_id" start -->
   <%= f.hidden_field :owner_id, value: current_user.id %>
-  <!-- Input for "owner_id" end -->
-  <!-- Label and input for owner_id end -->
-  <!-- Label and input for location start -->
   <div class="form-group">
     <% location_class = "form-control" %>
     <% location_was_invalid = photo.errors.include?(:location) %>
@@ -72,9 +59,7 @@
     <% end %>
 
     <%= f.label :location %>
-    <!-- Input for location start -->
     <%= f.text_field :location, class: location_class, placeholder: "Enter location" %>
-    <!-- Input for location end -->
     <% if location_was_invalid %>
       <% photo.errors.full_messages_for(:location).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -83,6 +68,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for location end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

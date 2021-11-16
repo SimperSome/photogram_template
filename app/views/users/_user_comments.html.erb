@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @user.comments.each do |comment| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to comment, comment %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="user_comments_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "users/user_comments_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

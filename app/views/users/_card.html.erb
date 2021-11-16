@@ -6,9 +6,7 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Username</dt>
-      <!-- Display username start -->
       <dd><%= user.username %></dd>
-      <!-- Display username end -->
 
     </dl>
 
@@ -17,21 +15,17 @@
         <%= link_to_show_or_back user, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link user start -->
       <div class="col">
         <%= link_to edit_user_url(user), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link user end -->
 
-      <!-- Delete link user start -->
       <div class="col">
         <%= link_to user, method: :delete, data: { confirm: "Do you really want to delete this user?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link user end -->
     </div>
   </div>
 

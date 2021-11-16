@@ -1,12 +1,7 @@
 <% was_validated = follow_request.errors.any? %>
 
 <%= form_with(model: follow_request, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for sender_id start -->
-  <!-- Input for "sender_id" start -->
   <%= f.hidden_field :sender_id, value: current_user.id %>
-  <!-- Input for "sender_id" end -->
-  <!-- Label and input for sender_id end -->
-  <!-- Label and input for recipient_id start -->
   <div class="form-group">
     <% recipient_class = "form-control" %>
     <% recipient_was_invalid = follow_request.errors.include?(:recipient) %>
@@ -20,9 +15,7 @@
     <% end %>
 
     <%= f.label :recipient_id %>
-    <!-- Input for recipient_id start -->
     <%= f.collection_select :recipient_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for recipient_id end -->
     <% if recipient_was_invalid %>
       <% follow_request.errors.full_messages_for(:recipient).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -31,6 +24,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for recipient_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>
