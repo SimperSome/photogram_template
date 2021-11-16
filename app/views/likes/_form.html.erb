@@ -1,0 +1,57 @@
+<% was_validated = like.errors.any? %>
+
+<%= form_with(model: like, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for user_id start -->
+  <div class="form-group">
+    <% user_class = "form-control" %>
+    <% user_was_invalid = like.errors.include?(:user) %>
+
+    <% if was_validated %>
+      <% if user_was_invalid %>
+        <% user_class << " is-invalid" %>
+      <% else %>
+        <% user_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :user_id %>
+    <!-- Input for user_id start -->
+    <%= f.number_field :user_id, class: user_class, placeholder: "Enter user" %>
+    <!-- Input for user_id end -->
+    <% if user_was_invalid %>
+      <% like.errors.full_messages_for(:user).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for user_id end -->
+  <!-- Label and input for photo_id start -->
+  <div class="form-group">
+    <% photo_class = "form-control" %>
+    <% photo_was_invalid = like.errors.include?(:photo) %>
+
+    <% if was_validated %>
+      <% if photo_was_invalid %>
+        <% photo_class << " is-invalid" %>
+      <% else %>
+        <% photo_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :photo_id %>
+    <!-- Input for photo_id start -->
+    <%= f.number_field :photo_id, class: photo_class, placeholder: "Enter photo" %>
+    <!-- Input for photo_id end -->
+    <% if photo_was_invalid %>
+      <% like.errors.full_messages_for(:photo).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for photo_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
