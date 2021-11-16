@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @likes, partial: "list_item", as: :like %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @likes, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>
