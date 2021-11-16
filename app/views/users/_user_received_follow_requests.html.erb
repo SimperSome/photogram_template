@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Received Follow Requests
+
+    <a data-toggle="collapse" href="#user_received_follow_requests_new_form">
+      Add follow request
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @user.received_follow_requests.each do |follow_request| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to follow_request, follow_request %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="user_received_follow_requests_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

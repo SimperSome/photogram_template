@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Likes
+
+    <a data-toggle="collapse" href="#user_likes_new_form">
+      Add like
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @user.likes.each do |like| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to like, like %>
+        <!-- Show link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="user_likes_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

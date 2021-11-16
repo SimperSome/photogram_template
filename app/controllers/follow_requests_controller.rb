@@ -42,8 +42,14 @@ class FollowRequestsController < ApplicationController
   # DELETE /follow_requests/1
   def destroy
     @follow_request.destroy
-    redirect_to follow_requests_url, notice: 'Follow request was successfully destroyed.'
+    message = "FollowRequest was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to follow_requests_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
