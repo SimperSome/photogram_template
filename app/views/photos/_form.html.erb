@@ -54,30 +54,9 @@
   </div>
   <!-- Label and input for image end -->
   <!-- Label and input for owner_id start -->
-  <div class="form-group">
-    <% owner_class = "form-control" %>
-    <% owner_was_invalid = photo.errors.include?(:owner) %>
-
-    <% if was_validated %>
-      <% if owner_was_invalid %>
-        <% owner_class << " is-invalid" %>
-      <% else %>
-        <% owner_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :owner_id %>
-    <!-- Input for owner_id start -->
-    <%= f.collection_select :owner_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for owner_id end -->
-    <% if owner_was_invalid %>
-      <% photo.errors.full_messages_for(:owner).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "owner_id" start -->
+  <%= f.hidden_field :owner_id, value: current_user.id %>
+  <!-- Input for "owner_id" end -->
   <!-- Label and input for owner_id end -->
   <!-- Label and input for location start -->
   <div class="form-group">
