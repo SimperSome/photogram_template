@@ -8,6 +8,10 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :sent_follow_requests,
+             resource: FollowRequestResource,
+             foreign_key: :sender_id
+
   has_many   :comments,
              foreign_key: :commenter_id
 
