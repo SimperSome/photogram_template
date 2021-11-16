@@ -24,7 +24,12 @@ class LikesController < ApplicationController
     @like = Like.new(like_params)
 
     if @like.save
-      redirect_to @like, notice: 'Like was successfully created.'
+      message = 'Like was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @like, notice: message
+      end
     else
       render :new
     end

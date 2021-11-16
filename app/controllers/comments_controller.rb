@@ -24,7 +24,12 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      message = 'Comment was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @comment, notice: message
+      end
     else
       render :new
     end

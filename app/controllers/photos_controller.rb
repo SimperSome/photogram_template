@@ -8,6 +8,8 @@ class PhotosController < ApplicationController
 
   # GET /photos/1
   def show
+    @comment = Comment.new
+    @like = Like.new
   end
 
   # GET /photos/new
@@ -24,7 +26,12 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
 
     if @photo.save
-      redirect_to @photo, notice: 'Photo was successfully created.'
+      message = 'Photo was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @photo, notice: message
+      end
     else
       render :new
     end
