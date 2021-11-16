@@ -12,13 +12,9 @@
   <!-- Label and input for body end -->
 
   <!-- Label and input for commenter_id start -->
-  <div class="form-group">
-    <%= f.label :commenter_id %>
-
-    <!-- Input for commenter_id start -->
-    <%= f.collection_select :commenter_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for commenter_id end -->
-  </div>
+  <!-- Input for "commenter_id" start -->
+  <%= f.hidden_field :commenter_id, value: current_user.id %>
+  <!-- Input for "commenter_id" end -->
   <!-- Label and input for commenter_id end -->
 
   <!-- Label and input for photo_id start -->

@@ -28,30 +28,9 @@
   </div>
   <!-- Label and input for body end -->
   <!-- Label and input for commenter_id start -->
-  <div class="form-group">
-    <% commenter_class = "form-control" %>
-    <% commenter_was_invalid = comment.errors.include?(:commenter) %>
-
-    <% if was_validated %>
-      <% if commenter_was_invalid %>
-        <% commenter_class << " is-invalid" %>
-      <% else %>
-        <% commenter_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :commenter_id %>
-    <!-- Input for commenter_id start -->
-    <%= f.collection_select :commenter_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for commenter_id end -->
-    <% if commenter_was_invalid %>
-      <% comment.errors.full_messages_for(:commenter).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "commenter_id" start -->
+  <%= f.hidden_field :commenter_id, value: current_user.id %>
+  <!-- Input for "commenter_id" end -->
   <!-- Label and input for commenter_id end -->
   <!-- Label and input for photo_id start -->
   <div class="form-group">
