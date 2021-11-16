@@ -5,6 +5,8 @@ class FollowRequest < ApplicationRecord
 
   # Validations
 
+  validates :recipient_id, :presence => true
+
   validates :sender_id, :presence => true
 
   # Scopes
