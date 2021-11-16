@@ -12,7 +12,9 @@
 
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= photo.image %></dd>
+      <dd>
+        <%= cl_image_tag @photo.image, class: "img-fluid" %>
+      </dd>
       <!-- Display image end -->
 
       <dt>Owner</dt>
