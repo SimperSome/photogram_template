@@ -12,6 +12,8 @@ RSpec.describe FollowRequest, type: :model do
 
     describe "Validations" do
 
+    it { should validate_uniqueness_of(:recipient_id).scoped_to(:sender_id).with_message('already requested') }
+
     it { should validate_presence_of(:recipient_id) }
 
     it { should validate_presence_of(:sender_id) }
