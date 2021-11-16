@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :feed,
+             :through => :following,
+             :source => :own_photos
+
   has_many   :activity,
              :through => :following,
              :source => :liked_photos
