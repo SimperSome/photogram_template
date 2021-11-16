@@ -24,16 +24,20 @@
 
       <!-- Edit link follow_request start -->
       <div class="col">
-        <%= link_to edit_follow_request_url(follow_request), class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-edit"></i>
+        <% if current_user == @follow_request.sender %>
+          <%= link_to edit_follow_request_url(follow_request), class: "btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Edit link follow_request end -->
 
       <!-- Delete link follow_request start -->
       <div class="col">
-        <%= link_to follow_request, method: :delete, data: { confirm: "Do you really want to delete this follow_request?" }, class: "btn btn-block btn-outline-secondary" do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == @follow_request.sender %>
+          <%= link_to follow_request, method: :delete, data: { confirm: "Do you really want to delete this follow_request?" }, class: "btn btn-block btn-outline-secondary" do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
       <!-- Delete link follow_request end -->

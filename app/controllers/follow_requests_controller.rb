@@ -1,4 +1,6 @@
 class FollowRequestsController < ApplicationController
+  before_action :current_user_must_be_follow_request_sender, only: [:edit, :update, :destroy] 
+
   before_action :set_follow_request, only: [:show, :edit, :update, :destroy]
 
   # GET /follow_requests
@@ -57,6 +59,14 @@ class FollowRequestsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_follow_request_sender
+    set_follow_request
+    unless current_user == @follow_request.sender
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_follow_request
       @follow_request = FollowRequest.find(params[:id])
