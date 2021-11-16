@@ -27,6 +27,9 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  many_to_many :liked_photos,
+               resource: PhotoResource
+
   has_many :feed, resource: PhotoResource do
     assign_each do |user, photos|
       photos.select do |p|
