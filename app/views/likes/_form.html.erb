@@ -2,30 +2,9 @@
 
 <%= form_with(model: like, local: true, novalidate: true, class: "mb-3") do |f| %>
   <!-- Label and input for user_id start -->
-  <div class="form-group">
-    <% user_class = "form-control" %>
-    <% user_was_invalid = like.errors.include?(:user) %>
-
-    <% if was_validated %>
-      <% if user_was_invalid %>
-        <% user_class << " is-invalid" %>
-      <% else %>
-        <% user_class << " is-valid" %>
-      <% end %>
-    <% end %>
-
-    <%= f.label :user_id %>
-    <!-- Input for user_id start -->
-    <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for user_id end -->
-    <% if user_was_invalid %>
-      <% like.errors.full_messages_for(:user).each do |message| %>
-        <div class="invalid-feedback d-flex">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <!-- Input for "user_id" start -->
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <!-- Input for "user_id" end -->
   <!-- Label and input for user_id end -->
   <!-- Label and input for photo_id start -->
   <div class="form-group">
