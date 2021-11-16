@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   # GET /comments
   def index
-    @comments = Comment.all
+    @comments = current_user.comments.page(params[:page]).per(10)
   end
 
   # GET /comments/1
