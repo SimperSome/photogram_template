@@ -27,4 +27,18 @@ class UserResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :activity, resource: PhotoResource do
+    assign_each do |user, photos|
+      photos.select do |p|
+        p.id.in?(user.activity.map(&:id))
+      end
+    end
+  end
+
+
+  filter :photo_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:activity).where(:likes => {:photo_id => value})
+    end
+  end
 end

@@ -18,4 +18,18 @@ class PhotoResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :fan_followers, resource: UserResource do
+    assign_each do |photo, users|
+      users.select do |u|
+        u.id.in?(photo.fan_followers.map(&:id))
+      end
+    end
+  end
+
+
+  filter :sender_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:fan_followers).where(:follow_requests => {:sender_id => value})
+    end
+  end
 end
