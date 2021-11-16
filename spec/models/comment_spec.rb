@@ -4,6 +4,8 @@ RSpec.describe Comment, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:commenter) }
+
     end
 
     describe "InDirect Associations" do
