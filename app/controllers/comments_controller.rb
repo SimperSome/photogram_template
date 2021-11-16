@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :current_user_must_be_comment_commenter, only: [:edit, :update, :destroy] 
+
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   # GET /comments
@@ -57,6 +59,14 @@ class CommentsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_comment_commenter
+    set_comment
+    unless current_user == @comment.commenter
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

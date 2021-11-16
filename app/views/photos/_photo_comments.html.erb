@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to comment, method: :delete, data: { confirm: "Do you really want to delete this comment" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == comment.commenter %>
+          <%= link_to comment, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 
