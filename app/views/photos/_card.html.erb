@@ -24,7 +24,11 @@
 
       <dt>Location</dt>
       <!-- Display location start -->
-      <dd><%= photo.location %></dd>
+      <dd>
+        <div>
+          <%= render partial: "photos/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display location end -->
 
     </dl>

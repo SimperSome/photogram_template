@@ -50,3 +50,5 @@ gem 'web_git', github: 'firstdraft/web_git', group: :development
 gem 'activeadmin', '2.2.0'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'gmaps4rails'
+gem 'underscore-rails'

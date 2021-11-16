@@ -150,6 +150,7 @@ GEM
       uri-ssh_git (>= 2.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    gmaps4rails (2.1.2)
     has_scope (0.8.0)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
@@ -341,6 +342,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2021.5)
       tzinfo (>= 1.0.0)
+    underscore-rails (1.8.3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
@@ -371,6 +373,7 @@ DEPENDENCIES
   coffee-rails
   devise (~> 4.7.2)
   dotenv-rails
+  gmaps4rails
   ideas_generators!
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
@@ -384,6 +387,7 @@ DEPENDENCIES
   sprockets (~> 3.7)
   sprockets-rails
   tzinfo-data
+  underscore-rails
   web-console (>= 3.3.0)
   web_git!
 
