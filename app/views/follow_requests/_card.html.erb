@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>Sender</dt>
       <!-- Display sender_id start -->
-      <dd><%= follow_request.sender_id %></dd>
+      <dd>
+        <% if @follow_request.sender.present? %>
+          <%= link_to follow_request.sender, follow_request.sender %>
+        <% end %>
+      </dd>
       <!-- Display sender_id end -->
 
       <dt>Recipient</dt>
       <!-- Display recipient_id start -->
-      <dd><%= follow_request.recipient_id %></dd>
+      <dd>
+        <% if @follow_request.recipient.present? %>
+          <%= link_to follow_request.recipient, follow_request.recipient %>
+        <% end %>
+      </dd>
       <!-- Display recipient_id end -->
 
     </dl>

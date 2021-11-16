@@ -19,7 +19,11 @@
 
       <dt>Owner</dt>
       <!-- Display owner_id start -->
-      <dd><%= photo.owner_id %></dd>
+      <dd>
+        <% if @photo.owner.present? %>
+          <%= link_to photo.owner, photo.owner %>
+        <% end %>
+      </dd>
       <!-- Display owner_id end -->
 
       <dt>Location</dt>
