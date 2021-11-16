@@ -1,0 +1,83 @@
+<% was_validated = comment.errors.any? %>
+
+<%= form_with(model: comment, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for body start -->
+  <div class="form-group">
+    <% body_class = "form-control" %>
+    <% body_was_invalid = comment.errors.include?(:body) %>
+
+    <% if was_validated %>
+      <% if body_was_invalid %>
+        <% body_class << " is-invalid" %>
+      <% else %>
+        <% body_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :body %>
+    <!-- Input for body start -->
+    <%= f.text_area :body, class: body_class, placeholder: "Enter body" %>
+    <!-- Input for body end -->
+    <% if body_was_invalid %>
+      <% comment.errors.full_messages_for(:body).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for body end -->
+  <!-- Label and input for commenter_id start -->
+  <div class="form-group">
+    <% commenter_class = "form-control" %>
+    <% commenter_was_invalid = comment.errors.include?(:commenter) %>
+
+    <% if was_validated %>
+      <% if commenter_was_invalid %>
+        <% commenter_class << " is-invalid" %>
+      <% else %>
+        <% commenter_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :commenter_id %>
+    <!-- Input for commenter_id start -->
+    <%= f.number_field :commenter_id, class: commenter_class, placeholder: "Enter commenter" %>
+    <!-- Input for commenter_id end -->
+    <% if commenter_was_invalid %>
+      <% comment.errors.full_messages_for(:commenter).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for commenter_id end -->
+  <!-- Label and input for photo_id start -->
+  <div class="form-group">
+    <% photo_class = "form-control" %>
+    <% photo_was_invalid = comment.errors.include?(:photo) %>
+
+    <% if was_validated %>
+      <% if photo_was_invalid %>
+        <% photo_class << " is-invalid" %>
+      <% else %>
+        <% photo_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :photo_id %>
+    <!-- Input for photo_id start -->
+    <%= f.number_field :photo_id, class: photo_class, placeholder: "Enter photo" %>
+    <!-- Input for photo_id end -->
+    <% if photo_was_invalid %>
+      <% comment.errors.full_messages_for(:photo).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for photo_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
